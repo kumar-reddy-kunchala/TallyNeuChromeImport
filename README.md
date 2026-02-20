@@ -29,5 +29,5 @@ https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer
 
 for delivery
 
-run nue build latest
+run neu build latest
 
