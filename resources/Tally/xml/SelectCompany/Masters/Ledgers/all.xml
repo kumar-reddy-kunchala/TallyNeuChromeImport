@@ -1,0 +1,285 @@
+<ENVELOPE>
+    <HEADER>
+        <VERSION>1</VERSION>
+        <TALLYREQUEST>Export</TALLYREQUEST>
+        <TYPE>Data</TYPE>
+        <ID>KS_CompanyWiseLedger</ID>
+    </HEADER>
+    <BODY>
+        <DESC>
+            <STATICVARIABLES>
+                <SVEXPORTFORMAT>$$SysName:XML</SVEXPORTFORMAT>
+            </STATICVARIABLES>
+            <TDL>
+                <TDLMESSAGE>
+                    <REPORT NAME="KS_CompanyWiseLedger" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <VARIABLE>SVFROMDATE,SVTODATE,SVCURRENTCOMPANY,Report Title</VARIABLE>
+
+
+                        <SET>SVfromDate:$$Date:&quot;01-04-2024&quot;</SET>
+                        <SET>SVToDate:$$Date:&quot;18-12-2024&quot;</SET>
+
+
+                        <FORMS>KS_CompanyWiseLedger</FORMS>
+                    </REPORT>
+                    <FORM NAME="KS_CompanyWiseLedger" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <TOPPARTS>KS_CompanyWiseLedger</TOPPARTS>
+                    </FORM>
+                    <PART NAME="KS_CompanyWiseLedger" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <TOPLINES>KS_CompanyWiseLedger</TOPLINES>
+                        <REPEAT>KS_CompanyWiseLedger : KS_loopLedger</REPEAT>
+                        <SCROLLED>Vertical</SCROLLED>
+                    </PART>
+                    <LINE NAME="KS_CompanyWiseLedger" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <LEFTFIELDS>KS_ledger_ROTC,KS_ledger_name,
+                            KS_ledger_salesTaxNumber, KS_ledger_parent,
+                            KS_ledger_GSTIN, KS_ledger_VATTIN, KS_ledger_GUID,
+                            KS_ledger_address, KS_ledger_pincode,
+                            KS_ledger_incometaxnumber, KS_ledger_creditperiod,
+                            KS_ledger_istds, KS_ledger_tdstype,
+                            KS_ledger_gstregistrationtype, KS_ledger_deemedpositive,
+                            KS_ledger_alterid, KS_OpeningBalance,
+                            KS_ClosingBalance, KS_ledgerfromdate, KS_ledgertodate,
+                            KS_chdr, KS_cbdr, KS_ledger_contact_person,
+                            KS_ledger_phone, KS_ledger_mobile, KS_ledger_fax,
+                            KS_ledger_email, KS_ledger_email_cc,
+                            KS_ledger_website, KS_ledger_state, KS_ledger_country,
+                            KS_ledger_pending_bills, KSw_ledger_pending_creditPeriod,
+                            KS_ledger_pending_ob, KS_ledger_pending_date,
+                            KS_ledger_pending_isdr, KS_hsn_code,
+                            KS_hsn_description,KS_TypeofLedger</LEFTFIELDS>
+                        <XMLTAG>&quot;Ledgers&quot;</XMLTAG>
+
+                    </LINE>
+                    <FIELD NAME="KS_ledger_name" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;Name&quot;</XMLTAG>
+                        <SET>$ledger_name</SET>
+                    </FIELD>
+                    <FIELD NAME="KS_ledger_ROTC" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;ledger_ROTC&quot;</XMLTAG>
+                        <SET>$ledger_ROTC</SET>
+                    </FIELD>
+                    <FIELD NAME="KS_ledger_salesTaxNumber" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;salesTaxNumber&quot;</XMLTAG>
+                        <SET>$ledger_salesTaxNumber</SET>
+                    </FIELD>
+                    <FIELD NAME="KS_ledger_parent" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;Parent&quot;</XMLTAG>
+                        <SET>$ledger_parent</SET>
+                    </FIELD>
+                    <FIELD NAME="KS_ledger_GSTIN" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;GSTIN&quot;</XMLTAG>
+                        <SET>$ledger_GSTIN</SET>
+                    </FIELD>
+                    <FIELD NAME="KS_ledger_VATTIN" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;VATTIN&quot;</XMLTAG>
+                        <SET>$ledger_VATTIN</SET>
+                    </FIELD>
+                    <FIELD NAME="KS_ledger_GUID" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;GUID&quot;</XMLTAG>
+                        <SET>$ledger_GUID</SET>
+                    </FIELD>
+                    <FIELD NAME="KS_ledger_address" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;Address&quot;</XMLTAG>
+                        <SET>$ledger_address</SET>
+                    </FIELD>
+                    <FIELD NAME="KS_ledger_pincode" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;PINCODE&quot;</XMLTAG>
+                        <SET>$ledger_pincode</SET>
+                    </FIELD>
+                    <FIELD NAME="KS_ledger_incometaxnumber" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;INCOMETAXNUMBER&quot;</XMLTAG>
+                        <SET>$ledger_incometaxnumber</SET>
+                    </FIELD>
+                    <FIELD NAME="KS_ledger_creditperiod" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;BILLCREDITPERIOD&quot;</XMLTAG>
+                        <SET>$ledger_creditperiod</SET>
+                    </FIELD>
+                    <FIELD NAME="KS_ledger_istds" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;ISTDSAPPLICABLE&quot;</XMLTAG>
+                        <SET>$ledger_istds</SET>
+                    </FIELD>
+                    <FIELD NAME="KS_ledger_tdstype" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;TDSDEDUCTEETYPE&quot;</XMLTAG>
+                        <SET>$ledger_tdstype</SET>
+                    </FIELD>
+                    <FIELD NAME="KS_ledger_gstregistrationtype" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;GSTREGISTRATIONTYPE&quot;</XMLTAG>
+                        <SET>$ledger_gstregistrationtype</SET>
+                    </FIELD>
+                    <FIELD NAME="KS_ledger_deemedpositive" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;ledger_positive&quot;</XMLTAG>
+                        <SET>$ledger_deemedpositive</SET>
+                    </FIELD>
+                    <FIELD NAME="KS_ledger_alterid" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;ALTERID&quot;</XMLTAG>
+                        <SET>$ledger_alterid</SET>
+                    </FIELD>
+                    <FIELD NAME="KS_ledgerfromdate" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;fromdate&quot;</XMLTAG>
+                        <SET>$ledgerfromdate</SET>
+                    </FIELD>
+                    <FIELD NAME="KS_ledgertodate" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;todate&quot;</XMLTAG>
+                        <SET>$ledgertodate</SET>
+                    </FIELD>
+                    <FIELD NAME="KS_chdr" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;IsOBDebit&quot;</XMLTAG>
+                        <SET>$chdr</SET>
+                    </FIELD>
+                    <FIELD NAME="KS_cbdr" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;IsCBDebit&quot;</XMLTAG>
+                        <SET>$cbdr</SET>
+                    </FIELD>
+                    <FIELD NAME="KS_ClosingBalance" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;closingbalance&quot;</XMLTAG>
+                        <SET>$closingbalance</SET>
+                    </FIELD>
+                    <FIELD NAME="KS_OpeningBalance" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;Openingbalance&quot;</XMLTAG>
+                        <SET>$openingbalance</SET>
+                    </FIELD>
+                    <FIELD NAME="KS_ledger_contact_person" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;KS_ledger_contact_person&quot;</XMLTAG>
+                        <SET>$KS_ledger_contact_person</SET>
+                    </FIELD>
+                    <FIELD NAME="KS_ledger_phone" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;KS_ledger_phone&quot;</XMLTAG>
+                        <SET>$KS_ledger_phone</SET>
+                    </FIELD>
+                    <FIELD NAME="KS_ledger_mobile" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;KS_ledger_mobile&quot;</XMLTAG>
+                        <SET>$KS_ledger_mobile</SET>
+                    </FIELD>
+                    <FIELD NAME="KS_ledger_fax" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;KS_ledger_fax&quot;</XMLTAG>
+                        <SET>$KS_ledger_fax</SET>
+                    </FIELD>
+                    <FIELD NAME="KS_ledger_email" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;KS_ledger_email&quot;</XMLTAG>
+                        <SET>$KS_ledger_email</SET>
+                    </FIELD>
+                    <FIELD NAME="KS_ledger_email_cc" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;KS_ledger_email_cc&quot;</XMLTAG>
+                        <SET>$KS_ledger_email_cc</SET>
+                    </FIELD>
+                    <FIELD NAME="KS_ledger_website" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;KS_ledger_website&quot;</XMLTAG>
+                        <SET>$KS_ledger_website</SET>
+                    </FIELD>
+                    <FIELD NAME="KS_ledger_state" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;KS_ledger_state&quot;</XMLTAG>
+                        <SET>$KS_ledger_state</SET>
+                    </FIELD>
+                    <FIELD NAME="KS_ledger_country" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;KS_ledger_country&quot;</XMLTAG>
+                        <SET>$KS_ledger_country</SET>
+                    </FIELD>
+                    <FIELD NAME="KS_ledger_pending_bills" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;ledger_pending_bills&quot;</XMLTAG>
+                        <SET>$ledger_pending_bills</SET>
+                    </FIELD>
+                    <FIELD NAME="KSw_ledger_pending_creditPeriod" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;ledger_pending_creditPeriod&quot;</XMLTAG>
+                        <SET>$ledger_pending_creditPeriod</SET>
+                    </FIELD>
+                    <FIELD NAME="KS_ledger_pending_ob" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;ledger_pending_ob&quot;</XMLTAG>
+                        <SET>$ledger_pending_ob</SET>
+                    </FIELD>
+                    <FIELD NAME="KS_ledger_pending_date" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;ledger_pending_date&quot;</XMLTAG>
+                        <SET>$ledger_pending_date</SET>
+                    </FIELD>
+                    <FIELD NAME="KS_ledger_pending_isdr" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;ledger_pending_isdr&quot;</XMLTAG>
+                        <SET>$ledger_pending_isdr</SET>
+                    </FIELD>
+                    <FIELD NAME="KS_hsn_description" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;HSN Description&quot;</XMLTAG>
+                        <SET>$KS_hsn_description</SET>
+                    </FIELD>
+                    <FIELD NAME="KS_hsn_code" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;HSN Code&quot;</XMLTAG>
+                        <SET>$KS_hsn_code</SET>
+                    </FIELD>
+                    <FIELD NAME="KS_TypeofLedger" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;TYPEOFLEDGER&quot;</XMLTAG>
+                        <SET>$KS_TypeofLedger</SET>
+                    </FIELD>
+                    <COLLECTION NAME="KS_loopLedger" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <COLLECTIONS>KS_datacoll:KS_loadedCompaniescoll</COLLECTIONS>
+                    </COLLECTION>
+                    <COLLECTION NAME="KS_datacoll" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <TYPE>Ledger</TYPE>
+                        <BELONGSTO>Yes</BELONGSTO>
+                        <METHOD>ledger_name:$name</METHOD>
+                        <METHOD>ledger_salesTaxNumber:$salestaxnumber</METHOD>
+                        <METHOD>ledger_ROTC:$rateoftaxcalculation</METHOD>
+                        <METHOD>ledger_parent:$parent</METHOD>
+                        <METHOD>ledger_GSTIN:$partygstin</METHOD>
+                        <METHOD>ledger_VATTIN:$VATTINNUMBER</METHOD>
+                        <METHOD>ledger_GUID:$guid</METHOD>
+                        <METHOD>ledger_address:$$FullListEx:&quot;^&quot;:address:$address</METHOD>
+                        <METHOD>ledger_pincode:$PINCODE</METHOD>
+                        <METHOD>ledger_incometaxnumber:$INCOMETAXNUMBER</METHOD>
+                        <METHOD>ledger_creditperiod:$BILLCREDITPERIOD</METHOD>
+                        <METHOD>ledger_istds:$ISTDSAPPLICABLE</METHOD>
+                        <METHOD>ledger_tdstype:$TDSDEDUCTEETYPE</METHOD>
+                        <METHOD>ledger_gstregistrationtype:$GSTREGISTRATIONTYPE</METHOD>
+                        <METHOD>ledger_deemedpositive:$isdeemedpositive</METHOD>
+                        <METHOD>ledger_alterid:$alterid</METHOD>
+                        <METHOD>openingbalance:$openingbalance</METHOD>
+                        <METHOD>closingbalance:$closingbalance</METHOD>
+                        <METHOD>ledgerfromdate:##svfromdate</METHOD>
+                        <METHOD>ledgertodate:##svtodate</METHOD>
+                        <METHOD>chdr:If $$IsDr:$openingbalance=&quot;Yes&quot; then &quot;Yes&quot; else &quot;No&quot;</METHOD>
+                        <METHOD>cbdr:If $$IsDr:$closingbalance=&quot;Yes&quot; then &quot;Yes&quot; else &quot;No&quot;</METHOD>
+                        <METHOD>KS_ledger_contact_person:$ledgercontact</METHOD>
+                        <METHOD>KS_ledger_phone:$ledgerphone</METHOD>
+                        <METHOD>KS_ledger_mobile:$ledgermobile</METHOD>
+                        <METHOD>KS_ledger_fax:$ledgerfax</METHOD>
+                        <METHOD>KS_ledger_email:$email</METHOD>
+                        <METHOD>KS_ledger_email_cc:$emailcc</METHOD>
+                        <METHOD>KS_ledger_website:$website</METHOD>
+                        <METHOD>KS_ledger_state:$ledstatename</METHOD>
+                        <METHOD>KS_ledger_country:$countryname</METHOD>
+                        <METHOD>ledger_pending_bills:$$FullListEx:&quot;^&quot;:billallocations:$name</METHOD>
+                        <METHOD>ledger_pending_creditPeriod:$$FullListEx:&quot;^&quot;:billallocations:$billcreditperiod</METHOD>
+                        <METHOD>ledger_pending_ob:$$FullListEx:&quot;^&quot;:billallocations:$openingbalance</METHOD>
+                        <METHOD>ledger_pending_date:$$FullListEx:&quot;^&quot;:billallocations:$billdate</METHOD>
+                        <METHOD>ledger_pending_isdr:$$FindIsDrCr:billallocations</METHOD>
+                        <METHOD>KS_hsn_code:$$FullListEx:&quot;^&quot;:gstdetails:$hsncode</METHOD>
+                        <METHOD>KS_hsn_description:$$FullListEx:&quot;^&quot;:gstdetails:$hsn</METHOD>
+                        <METHOD>KS_TypeofLedger:$VATDEALERNATURE</METHOD>
+                        <PARMVAR>SVFromDate:Date:$$Date:&quot;01-04-2024&quot;</PARMVAR>
+                        <PARMVAR>SVToDate:Date:$$Date:&quot;18-12-2024&quot;</PARMVAR>
+
+                    </COLLECTION>
+                    <COLLECTION NAME="KS_loadedCompaniescoll" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <TYPE>Company</TYPE>
+                        <NATIVEMETHOD>Name,Guid</NATIVEMETHOD>
+                        <FILTERS>CompanyNameFilter</FILTERS>
+                    </COLLECTION>
+                    <FUNCTION NAME="FindIsDrCr" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <PARAMETER>billAllocations:Aggregate</PARAMETER>
+                        <VARIABLES>v:String</VARIABLES>
+                        <VARIABLES>t:Amount</VARIABLES>
+                        <VARIABLES>s:String</VARIABLES>
+                        <RETURNS>String</RETURNS>
+                        <ACTION>001:Set:v:&quot;&quot;</ACTION>
+                        <ACTION>002:WALK COLLECTION : billAllocations</ACTION>
+                        <ACTION>003:SET:t:$openingbalance</ACTION>
+                        <ACTION>004:SET:s:If $$IsDr:##t = &quot;Yes&quot; then &quot;Yes&quot; else &quot;No&quot;</ACTION>
+                        <ACTION>005:Set:v:##v + ##s + &quot;^&quot;</ACTION>
+                        <ACTION>006:ENDWALK</ACTION>
+                        <ACTION>007:Return:##v</ACTION>
+                    </FUNCTION>
+
+                    <SYSTEM TYPE="Formulae" NAME="CompanyNameFilter" ISMODIFY="No" ISFIXED="No" ISINTERNAL="No">$$ExactMatch:($$String:$name):&quot;JYOTHI CYCLE STORES-2024-2025&quot;   </SYSTEM>
+
+                </TDLMESSAGE>
+            </TDL>
+        </DESC>
+    </BODY>
+</ENVELOPE>

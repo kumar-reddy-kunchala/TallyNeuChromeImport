@@ -1,0 +1,18 @@
+[
+    {
+        "field": "ITEMNAME",
+        "title": "ITEMNAME"
+    },
+    {
+        "field": "ITEMCATEGORY",
+        "title": "ITEMCATEGORY"
+    },
+    {
+        "field": "ITEMGROUP",
+        "title": "ITEMGROUP"
+    },
+    {
+        "field": "GUID",
+        "title": "GUID"
+    }
+]

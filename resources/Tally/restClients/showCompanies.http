@@ -1,0 +1,45 @@
+POST http://localhost:9000
+Content-Type: text/xml
+
+<ENVELOPE>
+    <HEADER>
+        <VERSION>1</VERSION>
+        <TALLYREQUEST>Export</TALLYREQUEST>
+        <TYPE>Data</TYPE>
+        <ID>KS_CompanyReport</ID>
+    </HEADER>
+    <BODY>
+        <DESC>
+            <STATICVARIABLES>
+                <SVEXPORTFORMAT>$$SysName:XML</SVEXPORTFORMAT>
+            </STATICVARIABLES>
+            <TDL>
+                <TDLMESSAGE>
+                    <REPORT NAME="KS_CompanyReport" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <FORMS>KS_CompanyForm</FORMS>
+                    </REPORT>
+                    <FORM NAME="KS_CompanyForm" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <TOPPARTS>KS_CompanyPart</TOPPARTS>
+                    </FORM>
+                    <PART NAME="KS_CompanyPart" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <TOPLINES>KS_CompanyLine</TOPLINES>
+                        <REPEAT>KS_CompanyLine: KS_CompanyMasters</REPEAT>
+                        <SCROLLED>Vertical</SCROLLED>
+                    </PART>
+                    <LINE NAME="KS_CompanyLine" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <LEFTFIELDS>KS_company_name</LEFTFIELDS>
+                        <XMLTAG>&quot;Companies&quot;</XMLTAG>
+                    </LINE>
+                    <FIELD NAME="KS_company_name" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;CompanyName&quot;</XMLTAG>
+                        <SET>$name</SET>
+                    </FIELD>
+                    <COLLECTION NAME="KS_CompanyMasters" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <TYPE>company</TYPE>
+                        <BELONGSTO>Yes</BELONGSTO>
+                    </COLLECTION>
+                </TDLMESSAGE>
+            </TDL>
+        </DESC>
+    </BODY>
+</ENVELOPE>

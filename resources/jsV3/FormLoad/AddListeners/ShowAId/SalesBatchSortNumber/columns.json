@@ -1,0 +1,56 @@
+[
+    {
+        "field": "PARTYNAME",
+        "title": "PARTYNAME",
+        "tagName": "PARTYNAME"
+    },
+    {
+        "field": "VOUCHERTYPE",
+        "title": "Voucher Type",
+        "tagName": "VOUCHERTYPE",
+        "filterControl": "select"
+    },
+    {
+        "field": "VOUCHERNUMBER",
+        "title": "Voucher Number",
+        "tagName": "VOUCHERNUMBER",
+        "filterControl": "select"
+    },
+    {
+        "field": "DATE",
+        "title": "DATE",
+        "tagName": "DATE"
+    },
+    {
+        "field": "BATCHITEM",
+        "title": "Item Name",
+        "tagName": "BATCHITEM"
+    },
+    {
+        "field": "BATCHNAME",
+        "title": "Batch Name",
+        "tagName": "BATCHNAME"
+    },
+    {
+        "field": "BATCHAMOUNT",
+        "title": "Amount",
+        "tagName": "BATCHAMOUNT",
+        "footerFormatter": "jFLocalBatchAmountTotal"
+    },
+    {
+        "field": "BATCHQTY",
+        "title": "BATCHQTY",
+        "tagName": "BATCHQTY"
+    },
+    {
+        "field": "BATCHRATE",
+        "title": "BATCHRATE",
+        "tagName": "BATCHRATE"
+    },
+    {
+        "field": "BatchQtyOnly",
+        "title": "Qty",
+        "tagName": "BatchQtyOnly",
+        "footerFormatter": "jFLocalBatchAmountTotal"
+    }
+]

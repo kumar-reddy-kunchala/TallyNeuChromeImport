@@ -1,0 +1,569 @@
+<ENVELOPE>
+  <HEADER>
+    <VERSION>1</VERSION>
+    <TALLYREQUEST>Export</TALLYREQUEST>
+    <TYPE>Data</TYPE>
+    <ID>KeshavSoft_CompanyWiseSales</ID>
+  </HEADER>
+  <BODY>      
+    <DESC>
+      <STATICVARIABLES>
+        <SVEXPORTFORMAT>$$SysName:XML</SVEXPORTFORMAT>
+      </STATICVARIABLES>
+      <TDL>
+        <TDLMESSAGE>
+          <REPORT NAME="KeshavSoft_CompanyWiseSales" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+          <VARIABLE>SVFROMDATE,SVTODATE,SVCURRENTCOMPANY,Report Title</VARIABLE>
+          
+            <FORMS>KeshavSoft_CompanyWiseSales</FORMS>
+          </REPORT>
+          <FORM NAME="KeshavSoft_CompanyWiseSales" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <TOPPARTS>KeshavSoft_CompanyWiseSales</TOPPARTS>
+          </FORM>
+          <PART NAME="KeshavSoft_CompanyWiseSales" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <TOPLINES>KeshavSoft_CompanyWiseSales</TOPLINES>
+            <REPEAT>KeshavSoft_CompanyWiseSales : KeshavSoft_loopSales</REPEAT>
+            <SCROLLED>Vertical</SCROLLED>
+          </PART>
+          <LINE NAME="KeshavSoft_CompanyWiseSales" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <LEFTFIELDS>KeshavSoft_salesvchnumber, KeshavSoft_salesvouchertype, KeshavSoft_salesvchguid,
+              KeshavSoft_salesvchpartyname, KeshavSoft_salesvchreference, KeshavSoft_salesvchnarration,
+              KeshavSoft_salesvchtermsofdelivery, KeshavSoft_salesvchdeliverynotes,
+              KeshavSoft_salesvchdeliverynotesdate, KeshavSoft_salesvchotherreference,
+              KeshavSoft_salesvchbuyerordernumber, KeshavSoft_salesvchbuyerorderdate,
+              KeshavSoft_dispatcheddocumentno, KeshavSoft_ShippedBy, KeshavSoft_Destination,
+              KeshavSoft_ladingbilldate, KeshavSoft_ladingbillno, KeshavSoft_motorvehicle,
+              KeshavSoft_ConsigneeName, KeshavSoft_Consigneecstnumber, KeshavSoft_Consigneestatename,
+              KeshavSoft_Consigneegstin, KeshavSoft_ConsigneeAddress, KeshavSoft_BuyerAddress,
+              KeshavSoft_buyercountry, KeshavSoft_buyerstatename, KeshavSoft_buyerplaceofsupply,
+              KeshavSoft_buyersalestaxno, KeshavSoft_Buyerscstnumber, KeshavSoft_salesvchpartygstin,
+              KeshavSoft_salesvchpartyledgername, KeshavSoft_salesvchbasicdatetime,
+              KeshavSoft_salesvchcreditperiod, KeshavSoft_salesvcheffectivedate,
+              KeshavSoft_salesvoucher_ledgerentriesname, KeshavSoft_salesvoucher_ledgerentriesamount,
+              KeshavSoft_salesvoucher_inventoryentrystockitem,
+              KeshavSoft_salesvoucher_stockItemDescription,
+              KeshavSoft_salesvoucher_ledgerentriespositive, KeshavSoft_salesvoucher_inventoryentryrate,
+              KeshavSoft_salesvoucher_inventoryentryamount,
+              KeshavSoft_salesvoucher_inventoryentryactualqty,
+              KeshavSoft_salesvoucher_inventoryentrybilledqty, KeshavSoft_salesvchalterid,
+              KeshavSoft_Optional, KeshavSoft_voucher_cancelled, KeshavSoft_discount, KeshavSoft_irn,
+              KeshavSoft_irnAckNo, KeshavSoft_irnAckDate,
+              KeshavSoft_ledger_description,KeshavSoft_HSNSACCode,KeshavSoft_HSNSACGSTRate,KeshavSoft_HSNSACIGSTRate,KeshavSoft_HSNSACCGSTRate,KeshavSoft_HSNSACSGSTRate,KeshavSoft_HSNSACTaxableAmt,
+              KeshavSoft_HSNSACIGSTAmt,KeshavSoft_HSNSACCGSTAmt,KeshavSoft_HSNSACSGSTAmt,KeshavSoft_HSNSACCessAmt,KeshavSoft_GSTREGISTRATION,KeshavSoft_CMPGSTIN,KeshavSoft_CMPGSTREGISTRATIONTYPE,KeshavSoft_CMPGSTSTATE,KeshavSoft_IRNQRCODE </LEFTFIELDS>
+            <XMLTAG>&quot;Sales&quot;</XMLTAG>
+           <Explode>KeshavSoft_BatchDetails</Explode>
+            
+          </LINE>
+          <PART NAME="KeshavSoft_BatchDetails" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <TOPLINES>KeshavSoft_BatchDetails</TOPLINES>
+            <REPEAT>KeshavSoft_BatchDetails : InventoryEntries </REPEAT>
+            <SCROLLED>Vertical</SCROLLED>
+          </PART>
+          <LINE NAME="KeshavSoft_BatchDetails" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <LEFTFIELDS>KeshavSoft_BatchItem,KeshavSoft_BatchNm,KeshavSoft_BatchQty,KeshavSoft_BatchRt,KeshavSoft_BatchAmt</LEFTFIELDS>
+            <XMLTAG>&quot;BATCH DETAILS&quot;</XMLTAG>
+          </LINE>
+          <FIELD NAME="KeshavSoft_BatchItem" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Batch Item&quot;</XMLTAG>
+            <SET>$StockItemName</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_BatchNm" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Batch Name&quot;</XMLTAG>
+            <SET>$$FullList:BatchAllocations:$BatchName</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_BatchQty" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Batch Qty&quot;</XMLTAG>
+            <SET>$$FullList:BatchAllocations:$BilledQty</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_BatchRt" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Batch Rate&quot;</XMLTAG>
+            <SET>$$FullList:BatchAllocations:$Rate</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_BatchAmt" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Batch Amount&quot;</XMLTAG>
+            <SET>$$FullList:BatchAllocations:$Amount</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_Destination" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Destination&quot;</XMLTAG>
+            <SET>$destination</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_Consigneecstnumber" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Consignee cst number&quot;</XMLTAG>
+            <SET>$consigneecstnumber</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_Buyerscstnumber" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Buyer CST number&quot;</XMLTAG>
+            <SET>$buyerscstnumber</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_Consigneegstin" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Consignee gst&quot;</XMLTAG>
+            <SET>$consigneegstin</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_Consigneestatename" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Consignee state&quot;</XMLTAG>
+            <SET>$consigneestatename</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_ConsigneeName" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Consignee name&quot;</XMLTAG>
+            <SET>$consigneename</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_ConsigneeAddress" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Consignee address&quot;</XMLTAG>
+            <SET>$consigneeaddress</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_ShippedBy" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Dispatched through&quot;</XMLTAG>
+            <SET>$shippedby</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_BuyerAddress" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Buyer Address&quot;</XMLTAG>
+            <SET>$buyeraddress</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_salesvchnumber" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Voucher Number&quot;</XMLTAG>
+            <SET>$salesvchnumber</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_salesvouchertype" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>"Voucher Type"</XMLTAG>
+            <SET>$KeshavSoft_salesvouchertype</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_salesvchguid" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;VoucherGuid&quot;</XMLTAG>
+            <SET>$salesvchguid</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_salesvchpartyname" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Party Name&quot;</XMLTAG>
+            <SET>$salesvchpartyname</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_salesvchreference" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Reference&quot;</XMLTAG>
+            <SET>$salesvchreference</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_salesvchpartygstin" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;PartyGSTIN&quot;</XMLTAG>
+            <SET>$salesvchpartygstin</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_salesvchpartyledgername" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Ledger Name&quot;</XMLTAG>
+            <SET>$salesvchpartyledgername</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_salesvchbasicdatetime" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Date Time&quot;</XMLTAG>
+            <SET>$salesvchbasicdatetime</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_salesvchcreditperiod" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Credit Period&quot;</XMLTAG>
+            <SET>$salesvchcreditperiod</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_salesvcheffectivedate" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Date&quot;</XMLTAG>
+            <SET>$salesvcheffectivedate</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_salesvoucher_ledgerentriesname" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Ledger_Name&quot;</XMLTAG>
+            <SET>$salesvoucher_ledgerentriesname</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_salesvoucher_ledgerentriesamount" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Ledger_Amount&quot;</XMLTAG>
+            <SET>$salesvoucher_ledgerentriesamount</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_salesvoucher_inventoryentrystockitem" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Stock Item Name&quot;</XMLTAG>
+            <SET>$salesvoucher_inventoryentrystockitem</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_salesvoucher_stockItemDescription" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>"Stock Item Description"</XMLTAG>
+            <SET>$salesvoucher_stockItemDescription</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_salesvoucher_ledgerentriespositive" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Ledger_Positive&quot;</XMLTAG>
+            <SET>$salesvoucher_ledgerentriespositive</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_salesvoucher_inventoryentryrate" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Item Rate&quot;</XMLTAG>
+            <SET>$salesvoucher_inventoryentryrate</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_salesvoucher_inventoryentryamount" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Item Amount&quot;</XMLTAG>
+            <SET>$salesvoucher_inventoryentryamount</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_salesvoucher_inventoryentryactualqty" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Item Actual Quantity&quot;</XMLTAG>
+            <SET>$salesvoucher_inventoryentryactualqty</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_salesvoucher_inventoryentrybilledqty" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Item Billed Quantity&quot;</XMLTAG>
+            <SET>$salesvoucher_inventoryentrybilledqty</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_salesvchalterid" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Alter ID&quot;</XMLTAG>
+            <SET>$salesvchalterid</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_salesvchnarration" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Narration&quot;</XMLTAG>
+            <SET>$salesvchnarration</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_salesvchtermsofdelivery" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Terms Of Delivery&quot;</XMLTAG>
+            <SET>$salesvchtermsofdelivery</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_salesvchdeliverynotes" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Delivery Notes&quot;</XMLTAG>
+            <SET>$salesvchdeliverynotes</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_salesvchdeliverynotesdate" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Delivery Notes Date&quot;</XMLTAG>
+            <SET>$salesvchdeliverynotesdate</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_salesvchotherreference" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Other references&quot;</XMLTAG>
+            <SET>$salesvchotherreference</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_salesvchbuyerordernumber" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Buyer Order Number&quot;</XMLTAG>
+            <SET>$salesvchbuyerordernumber</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_salesvchbuyerorderdate" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Buyer Order Date&quot;</XMLTAG>
+            <SET>$salesvchbuyerorderdate</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_dispatcheddocumentno" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Dispatched Document Number&quot;</XMLTAG>
+            <SET>$dispatcheddocumentno</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_ladingbilldate" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Lading Bill Date&quot;</XMLTAG>
+            <SET>$ladingbilldate</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_ladingbillno" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Lading Bill Number&quot;</XMLTAG>
+            <SET>$ladingbillno</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_motorvehicle" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Motor Vehicle&quot;</XMLTAG>
+            <SET>$motorvehicle</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_buyercountry" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Buyer Country&quot;</XMLTAG>
+            <SET>$buyercountry</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_buyerstatename" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Buyer state name&quot;</XMLTAG>
+            <SET>$buyerstatename</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_buyerplaceofsupply" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Buyer place of supply&quot;</XMLTAG>
+            <SET>$buyerplaceofsupply</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_buyersalestaxno" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Buyer sales tax no&quot;</XMLTAG>
+            <SET>$buyersalestaxno</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_Optional" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Optional&quot;</XMLTAG>
+            <SET>$optional</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_voucher_cancelled" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;voucher_cancelled&quot;</XMLTAG>
+            <SET>$voucher_cancelled</SET>
+          </FIELD>
+          
+          <FIELD NAME="KeshavSoft_irn" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;IRN&quot;</XMLTAG>
+            <SET>$KeshavSoft_irn</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_irnAckNo" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;IRN ACK No&quot;</XMLTAG>
+            <SET>$KeshavSoft_irnAckNo</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_irnAckDate" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;IRN ACK Date&quot;</XMLTAG>
+            <SET>$KeshavSoft_irnAckDate</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_ledger_description" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;LEDGER DESCRIPTION&quot;</XMLTAG>
+            <SET>$KeshavSoft_ledger_description</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_discount" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;Discount&quot;</XMLTAG>
+            <SET>$KeshavSoft_discount</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_HSNSACCode" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;KeshavSoft_HSNSACCode&quot;</XMLTAG>
+            <SET>$KeshavSoft_HSNSACCode</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_HSNSACGSTRate" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;KeshavSoft_HSNSACGSTRate&quot;</XMLTAG>
+            <SET>$KeshavSoft_HSNSACGSTRate</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_HSNSACCGSTRate" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;KeshavSoft_HSNSACCGSTRate&quot;</XMLTAG>
+            <SET>$KeshavSoft_HSNSACCGSTRate</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_HSNSACSGSTRate" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;KeshavSoft_HSNSACSGSTRate&quot;</XMLTAG>
+            <SET>$KeshavSoft_HSNSACSGSTRate</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_HSNSACIGSTRate" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;KeshavSoft_HSNSACIGSTRate&quot;</XMLTAG>
+            <SET>$KeshavSoft_HSNSACIGSTRate</SET>
+          </FIELD>
+
+          <FIELD NAME="KeshavSoft_HSNSACTaxableAmt" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;KeshavSoft_HSNSACTaxableAmt&quot;</XMLTAG>
+            <SET>$KeshavSoft_HSNSACTaxableAmt</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_HSNSACIGSTAmt" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;KeshavSoft_HSNSACIGSTAmt&quot;</XMLTAG>
+            <SET>$KeshavSoft_HSNSACIGSTAmt</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_HSNSACCGSTAmt" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;KeshavSoft_HSNSACCGSTAmt&quot;</XMLTAG>
+            <SET>$KeshavSoft_HSNSACCGSTAmt</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_HSNSACSGSTAmt" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;KeshavSoft_HSNSACSGSTAmt&quot;</XMLTAG>
+            <SET>$KeshavSoft_HSNSACSGSTAmt</SET>
+          </FIELD>
+
+          <FIELD NAME="KeshavSoft_HSNSACCESSAmt" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;KeshavSoft_HSNSACCESSAmt&quot;</XMLTAG>
+            <SET>$KeshavSoft_HSNSACCESSAmt</SET>
+          </FIELD>
+         <FIELD NAME="KeshavSoft_GSTREGISTRATION" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;KeshavSoft_GSTREGISTRATION&quot;</XMLTAG>
+            <SET>$KeshavSoft_GSTREGISTRATION</SET>
+          </FIELD>
+         <FIELD NAME="KeshavSoft_CMPGSTIN" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;KeshavSoft_CMPGSTIN&quot;</XMLTAG>
+            <SET>$KeshavSoft_CMPGSTIN</SET>
+          </FIELD>
+         <FIELD NAME="KeshavSoft_CMPGSTREGISTRATIONTYPE" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;KeshavSoft_CMPGSTREGISTRATIONTYPE&quot;</XMLTAG>
+            <SET>$KeshavSoft_CMPGSTREGISTRATIONTYPE</SET>
+          </FIELD>
+         <FIELD NAME="KeshavSoft_CMPGSTSTATE" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>&quot;KeshavSoft_CMPGSTSTATE&quot;</XMLTAG>
+            <SET>$KeshavSoft_CMPGSTSTATE</SET>
+          </FIELD>
+          <FIELD NAME="KeshavSoft_IRNQRCODE" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <XMLTAG>"IRNQRCODE"</XMLTAG>
+            <SET>$KeshavSoft_IRNQRCODE</SET>
+          </FIELD>
+
+          <COLLECTION NAME="KeshavSoft_datacoll" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <TYPE>vouchers:vouchertype</TYPE>
+            <CHILDOF>$$VchTypeSales</CHILDOF>
+            <BELONGSTO>Yes</BELONGSTO>
+            <ComputeVar>IsKeshavSoftVchNo:String:$vouchernumber</ComputeVar>
+            <METHOD>salesvchnumber:$vouchernumber</METHOD>
+            <METHOD>KeshavSoft_salesvouchertype: $vouchertypename</METHOD>
+            <METHOD>salesvchguid:$guid</METHOD>
+            <METHOD>salesvchpartyname:$partyname</METHOD>
+            <METHOD>salesvchreference:$reference</METHOD>
+            <METHOD>salesvchnarration:$narration</METHOD>
+            <METHOD>salesvchtermsofdelivery:$$FullListEx:&quot;^&quot;:basicorderterms:$basicorderterms</METHOD>
+            <METHOD>salesvchdeliverynotes:$$FullListEx:&quot;^&quot;:invoicedelnotes:$basicshipdeliverynote</METHOD>
+            <METHOD>salesvchdeliverynotesdate:$$FullListEx:&quot;^&quot;:invoicedelnotes:$basicshippingdate</METHOD>
+            <METHOD>salesvchotherreference:$basicorderref</METHOD>
+            <METHOD>salesvchbuyerordernumber:$$FullListEx:&quot;^&quot;:invoiceorderlist:$basicpurchaseorderno</METHOD>
+            <METHOD>salesvchbuyerorderdate:$$FullListEx:&quot;^&quot;:invoiceorderlist:$basicorderdate</METHOD>
+            <METHOD>dispatcheddocumentno:$basicshipdocumentno</METHOD>
+            <METHOD>shippedby:$basicshippedby</METHOD>
+            <METHOD>destination:$basicfinaldestination</METHOD>
+            <METHOD>ladingbilldate:$billofladingdate</METHOD>
+            <METHOD>ladingbillno:$billofladingno</METHOD>
+            <METHOD>motorvehicle:$basicshipvesselno</METHOD>
+            <METHOD>consigneename:$basicbuyername</METHOD>
+            <METHOD>consigneecstnumber:$consigneecstnumber</METHOD>
+            <METHOD>consigneestatename:$consigneestatename</METHOD>
+            <METHOD>consigneegstin:$consigneegstin</METHOD>
+            <METHOD>consigneeaddress:$$FullListEx:&quot;^&quot;:basicbuyeraddress:$basicbuyeraddress</METHOD>
+            <METHOD>buyeraddress:$$FullListEx:&quot;^&quot;:address:$address</METHOD>
+            <METHOD>buyercountry:$countryofresidence</METHOD>
+            <METHOD>buyerstatename:$statename</METHOD>
+            <METHOD>buyerplaceofsupply:$placeofsupply</METHOD>
+            <METHOD>buyersalestaxno:$basicbuyerssalestaxno</METHOD>
+            <METHOD>buyerscstnumber:$buyerscstnumber</METHOD>
+            <METHOD>salesvchpartygstin: $partygstin</METHOD>
+            <METHOD>salesvchpartyledgername: $partyledgername</METHOD>
+            <METHOD>salesvchbasicdatetime: $basicdatetimeofinvoice</METHOD>
+            <METHOD>salesvcheffectivedate: $effectivedate</METHOD>
+            <METHOD>salesvchcreditperiod: $basicduedateofpymt</METHOD>
+            <METHOD>salesvchalterid: $alterid</METHOD>
+            <METHOD>optional : $Isoptional</METHOD>
+            <METHOD>salesvoucher_ledgerentriesname:$$FullListEx:&quot;^&quot;:ledgerentries:$ledgername</METHOD>
+            <METHOD>salesvoucher_ledgerentriesamount:$$FullListEx:&quot;^&quot;:ledgerentries:$amount</METHOD>
+            <METHOD>salesvoucher_inventoryentrystockitem:$$FullListEx:&quot;^&quot;:inventoryentries:$stockitemname</METHOD>
+            <METHOD>salesvoucher_stockItemDescription:$$FindUserDesc:inventoryentries</METHOD>
+            <METHOD>salesvoucher_ledgerentriespositive:$$FullListEx:&quot;^&quot;:ledgerentries:$isdeemedpositive</METHOD>
+            <METHOD>salesvoucher_inventoryentryrate:$$FullListEx:&quot;^&quot;:inventoryentries:$rate</METHOD>
+            <METHOD>salesvoucher_inventoryentryamount:$$FullListEx:&quot;^&quot;:inventoryentries:$amount</METHOD>
+            <METHOD>salesvoucher_inventoryentryactualqty:$$FindActualAltQty:inventoryentries</METHOD>
+            <METHOD>salesvoucher_inventoryentrybilledqty:$$FindBilledAltQty:inventoryentries</METHOD>
+            <METHOD>voucher_cancelled:$iscancelled</METHOD>
+            <METHOD>KeshavSoft_discount:$$FullListEx:&quot;^&quot;:inventoryentries:$discount</METHOD>
+            
+            <METHOD>KeshavSoft_irn:$irn</METHOD>
+            <METHOD>KeshavSoft_irnAckNo:$irnackno</METHOD>
+            <METHOD>KeshavSoft_irnAckDate:$irnackdate</METHOD>
+            <METHOD>KeshavSoft_ledger_description:$$FindLedgerDesc:ledgerentries</METHOD>
+            <METHOD>KeshavSoft_HSNSACCode:If ($$IsEmpty:($$FullListEx:&quot;^&quot;:inventoryentries:$HSNCode) and $$IsEmpty:($$FullListEx:&quot;^&quot;:ledgerentries:$HSNCode)) then $$FullListEx:&quot;^&quot;:inventoryentries:$GSTHSNNAME else ($$FullListEx:&quot;^&quot;:inventoryentries:$HSNCode)+(&quot;^&quot;)+($$FullListEx:&quot;^&quot;:Ledgerentries:$HSNCode)</METHOD>
+            <METHOD>KeshavSoft_HSNSACCESSAmt:$$FullListEx:&quot;^&quot;:inventoryentries:$Apprcess  + &quot;^&quot; + $$FullListEx:&quot;^&quot;:ledgerentries:$Apprcess</METHOD>
+            <METHOD>KeshavSoft_HSNSACTAXABLEAMT:$$FullListEx:&quot;^&quot;:inventoryentries:$Computedassessablevalue  + &quot;^&quot; + $$FullListEx:&quot;^&quot;:ledgerentries:$Computedassessablevalue</METHOD>
+            <METHOD>KeshavSoft_HSNSACIGSTAmt:$$FullListEx:&quot;^&quot;:inventoryentries:$Apprigst  + &quot;^&quot; + $$FullListEx:&quot;^&quot;:ledgerentries:$Apprigst</METHOD>
+            <METHOD>KeshavSoft_HSNSACCGSTAmt:$$FullListEx:&quot;^&quot;:(inventoryentries:$Apprcgst)  + &quot;^&quot; + $$FullListEx:&quot;^&quot;:ledgerentries:$Apprcgst</METHOD>
+            <METHOD>KeshavSoft_HSNSACSGSTAmt:$$FullListEx:&quot;^&quot;:(inventoryentries:$Apprcgst)  + &quot;^&quot; + $$FullListEx:&quot;^&quot;:ledgerentries:$Apprcgst</METHOD>
+            <METHOD>KeshavSoft_HSNSACIGSTRate:$$FullListEx:&quot;^&quot;:inventoryentries:$igstrate  + &quot;^&quot; + $$FullListEx:&quot;^&quot;:ledgerentries:$igstrate</METHOD>
+            <METHOD>KeshavSoft_HSNSACCGSTRate:$$FullListEx:&quot;^&quot;:inventoryentries:$cgstrate  + &quot;^&quot; + $$FullListEx:&quot;^&quot;:ledgerentries:$cgstrate</METHOD>
+            <METHOD>KeshavSoft_HSNSACSGSTRate:$$FullListEx:&quot;^&quot;:inventoryentries:$sgstrate  + &quot;^&quot; + $$FullListEx:&quot;^&quot;:ledgerentries:$sgstrate</METHOD>
+            <METHOD>KeshavSoft_HSNSACGSTRate:$$FullListEx:&quot;^&quot;:inventoryentries:$igstrate  + &quot;^&quot; + $$FullListEx:&quot;^&quot;:ledgerentries:$igstrate</METHOD>
+            <METHOD>KeshavSoft_GSTREGISTRATION:$GSTREGISTRATION</METHOD>
+            <METHOD>KeshavSoft_CMPGSTIN:$CMPGSTIN</METHOD>
+            <METHOD>KeshavSoft_CMPGSTREGISTRATIONTYPE:$CMPGSTREGISTRATIONTYPE</METHOD>
+            <METHOD>KeshavSoft_CMPGSTSTATE:$CMPGSTSTATE</METHOD>
+            <METHOD>KeshavSoft_IRNQRCODE:$IRNQRCODE</METHOD>
+
+            <NATIVEMETHOD>ledgerentries.*, inventoryentries.*, ledgerentries.userdescription.*, basicorderterms.*, invoicedelnotes.*, invoiceorderlist.*, basicbuyeraddress.*, address.* </NATIVEMETHOD>
+            <PARMVAR>SVFromDate:Date:$$Date:&quot;15-06-2024&quot;</PARMVAR>
+            <PARMVAR>SVToDate:Date:$$Date:&quot;15-06-2024&quot;</PARMVAR>
+         
+            
+          </COLLECTION>
+          <COLLECTION NAME="KeshavSoft_datacoll1" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <TYPE>vouchers:vouchertype</TYPE>
+            <CHILDOF>$$VchTypeSales</CHILDOF>
+            <BELONGSTO>Yes</BELONGSTO>
+            <Compute> IsCGSTLedVar:$$FilterAmtTotal:LedgerEntries:IsCGSTLed:$Amount</Compute>
+            <Compute> IsSGSTLedVar:$$FilterAmtTotal:LedgerEntries:IsSGSTLed:$Amount</Compute>
+            <Compute> IsIGSTLedVar:$$FilterAmtTotal:LedgerEntries:IsIGSTLed:$Amount</Compute>
+            <Compute> IsCessLedVar:$$FilterAmtTotal:LedgerEntries:IsCessLed:$Amount</Compute>
+            <METHOD>KeshavSoftInvNo:$vouchernumber</METHOD>
+
+
+            <PARMVAR>SVFromDate:Date:$$Date:&quot;01-04-2024&quot;</PARMVAR>
+            <PARMVAR>SVToDate:Date:$$Date:&quot;17-12-2024&quot;</PARMVAR>
+           
+
+          </COLLECTION>
+
+          <COLLECTION NAME="KeshavSoft_loadedCompaniescoll" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <TYPE>Company</TYPE>
+            <NATIVEMETHOD>Name,Guid</NATIVEMETHOD>
+          </COLLECTION>
+
+          <COLLECTION NAME="KeshavSoft_loopSales" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <COLLECTIONS>KeshavSoft_datacoll:KeshavSoft_loadedCompaniescoll</COLLECTIONS>
+
+          </COLLECTION>
+
+
+          <FUNCTION NAME="FindUserDesc" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <PARAMETER>inventoryentries:Aggregate</PARAMETER>
+            <VARIABLES>v:String</VARIABLES>
+            <VARIABLES>s:String</VARIABLES>
+            <RETURNS>String</RETURNS>
+            <ACTION>001:Set:v:&quot;&quot;</ACTION>
+            <ACTION>002:Set:s:&quot;&quot;</ACTION>
+            <ACTION>003:WALK COLLECTION : inventoryentries</ACTION>
+            <ACTION>004:Set:s:$$FullListEx:&quot;~&quot;:basicuserdescription:$basicuserdescription</ACTION>
+            <ACTION>005:Set:v: ##v + ##s + &quot;^&quot;</ACTION>
+            <ACTION>006:ENDWALK</ACTION>
+            <ACTION>007:Return:##v</ACTION>
+          </FUNCTION>
+          <FUNCTION NAME="FindActualAltQty" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <PARAMETER>inventoryentries:Aggregate</PARAMETER>
+            <VARIABLES>v:String</VARIABLES>
+            <VARIABLES>s:String</VARIABLES>
+            <RETURNS>String</RETURNS>
+            <ACTION>001:Set:v:&quot;&quot;</ACTION>
+            <ACTION>002:Set:s:&quot;&quot;</ACTION>
+            <ACTION>003:WALK COLLECTION : inventoryentries</ACTION>
+            <ACTION>004:Set:s:$$String:($ActualQty)+"="+$$String:($ActualQty):Symbol,ShortForm,Secondary</ACTION>
+            <ACTION>005:Set:v: ##v + ##s + &quot;^&quot;</ACTION>
+            <ACTION>006:ENDWALK</ACTION>
+            <ACTION>007:Return:##v</ACTION>
+          </FUNCTION>
+          <FUNCTION NAME="FindBilledAltQty" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <PARAMETER>inventoryentries:Aggregate</PARAMETER>
+            <VARIABLES>v:String</VARIABLES>
+            <VARIABLES>s:String</VARIABLES>
+            <RETURNS>String</RETURNS>
+            <ACTION>001:Set:v:&quot;&quot;</ACTION>
+            <ACTION>002:Set:s:&quot;&quot;</ACTION>
+            <ACTION>003:WALK COLLECTION : inventoryentries</ACTION>
+            <ACTION>004:Set:s:$$String:($ActualQty)+"="+$$String:($BilledQty):Symbol,ShortForm,Secondary</ACTION>
+            <ACTION>005:Set:v: ##v + ##s + &quot;^&quot;</ACTION>
+            <ACTION>006:ENDWALK</ACTION>
+            <ACTION>007:Return:##v</ACTION>
+          </FUNCTION>
+          <FUNCTION NAME="FindLedgerDesc" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <PARAMETER>ledgerentries:Aggregate</PARAMETER>
+            <VARIABLES>v:String</VARIABLES>
+            <VARIABLES>s:String</VARIABLES>
+            <RETURNS>String</RETURNS>
+            <ACTION>001:Set:v:&quot;&quot;</ACTION>
+            <ACTION>002:Set:s:&quot;&quot;</ACTION>
+            <ACTION>003:WALK COLLECTION : ledgerentries</ACTION>
+            <ACTION>004:Set:s:$$FullListEx:&quot;~&quot;:userdescription:$userdescription</ACTION>
+            <ACTION>005:Set:v: ##v + ##s + &quot;^&quot;</ACTION>
+            <ACTION>006:ENDWALK</ACTION>
+            <ACTION>007:Return:##v </ACTION>
+          </FUNCTION>
+          <SYSTEM TYPE="Formulae" NAME="IsCGSTLed" ISMODIFY="No" ISFIXED="No" ISINTERNAL="No">$$IsSysNameEqual:GST:$TaxType:Ledger:$LedgerName and $$IsSysNameEqual:CGST:$GSTDutyHead:Ledger:$LedgerName   </SYSTEM>
+          <SYSTEM TYPE="Formulae" NAME="IsSGSTLed" ISMODIFY="No" ISFIXED="No" ISINTERNAL="No">$$IsSysNameEqual:GST:$TaxType:Ledger:$LedgerName and $$IsSysNameEqual:SGST:$GSTDutyHead:Ledger:$LedgerName   </SYSTEM>
+          <SYSTEM TYPE="Formulae" NAME="IsIGSTLed" ISMODIFY="No" ISFIXED="No" ISINTERNAL="No">$$IsSysNameEqual:GST:$TaxType:Ledger:$LedgerName and $$IsSysNameEqual:IGST:$GSTDutyHead:Ledger:$LedgerName   </SYSTEM>
+          <SYSTEM TYPE="Formulae" NAME="IsCessLed" ISMODIFY="No" ISFIXED="No" ISINTERNAL="No">$$IsSysNameEqual:GST:$TaxType:Ledger:$LedgerName and $$IsSysNameEqual:CESS:$GSTDutyHead:Ledger:$LedgerName   </SYSTEM>
+                
+
+          <COLLECTION NAME="VchSalesHSNSummaryLed" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <SOURCECOLLECTION>KeshavSoft_datacoll1</SOURCECOLLECTION>
+            <Walk> LedgerEntries</Walk>
+            <NATIVEMETHOD>IsDeemedPositive</NATIVEMETHOD>
+            <By>         KeshavSoftInvNo  :$KeshavSoftInvNo</By>
+            <By> HSNCd: $$GetInfoFromHierarchy:$LedgerNAme:"Ledger":"HSNCode":($$Owner:$Date):"GST"</By>
+            <By> ItemGSTRate: $$GetGSTRate:($$Owner:$Date):$LedgerNAme:"":@@IGSTDutyHead:$GSTLedgerRate</By>
+            <Compute> HSNCGSTRate: if $().IsCGSTLedVar!=0 then $$GetGSTRate:($$Owner:$Date):$LedgerNAme:"":@@IGSTDutyHead:$GSTLedgerRate/2 else 0</Compute>
+            <Compute> HSNSGSTRate: if $().IsSGSTLedVar!=0 then $$GetGSTRate:($$Owner:$Date):$LedgerNAme:"":@@IGSTDutyHead:$GSTLedgerRate/2 else 0</Compute>
+            <Compute> HSNIGSTRate: if $().IsIGSTLedVar!=0 then $$GetGSTRate:($$Owner:$Date):$LedgerNAme:"":@@IGSTDutyHead:$GSTLedgerRate else 0</Compute>
+            <AggrCompute> TaxableVal: Sum: $$AsAmount:$Amount</AggrCompute>
+            <AggrCompute> CGSTVal: Sum: if $().IsCGSTLedVar!=0 then  $Amount*$$GetGSTRate:($$Owner:$Date):$LedgerNAme:"":@@CGSTDutyHead:$GSTLedgerRate/100 else 0</AggrCompute>
+            <AggrCompute> SGSTVal: Sum: if $().IsSGSTLedVar!=0 then $Amount*$$GetGSTRate:($$Owner:$Date):$LedgerNAme:"":@@SGSTDutyHead:$GSTLedgerRate/100 else 0</AggrCompute>
+            <AggrCompute> IGSTVal: Sum: if $().IsIGSTLedVar!=0 then $Amount*$$GetGSTRate:($$Owner:$Date):$LedgerNAme:"":@@IGSTDutyHead:$GSTLedgerRate/100 else 0</AggrCompute>
+            <AggrCompute> CessVal: Sum: if $().IsCessLedVar!=0 then $Amount*$$GetGSTRate:($$Owner:$Date):$LedgerNAme:"":@@CessDutyHead:$GSTLedgerRate/100 else 0</AggrCompute>
+          <FILTERS>ISCR</FILTERS>
+          </COLLECTION>
+          <COLLECTION NAME="VchSalesHSNSummary" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <SOURCECOLLECTION>KeshavSoft_datacoll1</SOURCECOLLECTION>
+            <Walk> InventoryEntries</Walk>
+            <By>         KeshavSoftInvNo  :$KeshavSoftInvNo</By>
+            <By>HSNCd: $$GetInfoFromHierarchy:$StockItemName:"StockItem":"HSNCode":($$Owner:$Date):"GST"</By>
+            <By>ItemGSTRate:  $$GetGSTRate:($$Owner:$Date):"":$StockItemName:@@IGSTDutyHead:$GSTStockItemRate</By>
+            <Compute> HSNCGSTRate: if $().IsCGSTLedVar!=0 then $$GetGSTRate:($$Owner:$Date):"":$StockItemName:@@IGSTDutyHead:$GSTStockItemRate/2 else 0</Compute>
+            <Compute>HSNSGSTRate: if $().IsSGSTLedVar!=0 then $$GetGSTRate:($$Owner:$Date):"":$StockItemName:@@IGSTDutyHead:$GSTStockItemRate/2 else 0</Compute>
+            <Compute> HSNIGSTRate: if $().IsIGSTLedVar!=0 then $$GetGSTRate:($$Owner:$Date):"":$StockItemName:@@IGSTDutyHead:$GSTStockItemRate else 0</Compute>
+            <AggrCompute> TaxableVal: Sum: $$AsAmount:$Amount</AggrCompute>
+            <AggrCompute> CGSTVal: Sum: if $().IsCGSTLedVar!=0 then $Amount*$$GetGSTRate:($$Owner:$Date):"":$StockItemName:@@CGSTDutyHead:$GSTStockItemRate/100 else 0</AggrCompute>
+            <AggrCompute> SGSTVal: Sum: if $().IsSGSTLedVar!=0 then $Amount*$$GetGSTRate:($$Owner:$Date):"":$StockItemName:@@SGSTDutyHead:$GSTStockItemRate/100 else 0</AggrCompute>
+            <AggrCompute> IGSTVal: Sum: if $().IsIGSTLedVar!=0 then $Amount*$$GetGSTRate:($$Owner:$Date):"":$StockItemName:@@IGSTDutyHead:$GSTStockItemRate/100 else 0</AggrCompute>
+            <AggrCompute> CessVal: Sum: if $().IsCessLedVar!=0 then $Amount*$$GetGSTRate:($$Owner:$Date):"":$StockItemName:@@CessDutyHead:$GSTStockItemRate/100 else 0</AggrCompute>
+          </COLLECTION>
+          <COLLECTION NAME="MainVchSalesHSNSummary" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+            <Collection> VchSalesHSNSummary, VchSalesHSNSummaryLed</Collection>
+            <By>         KeshavSoftInvNo  :$KeshavSoftInvNo</By>
+            <By> HSNCd: $HSNCd</By>
+            <By> ItemGSTRate: $ItemGSTRate</By>
+            <AggrCompute> HSNCGSTRate: Last: $ItemGSTRate</AggrCompute>
+            <AggrCompute> HSNSGSTRate: Last: $ItemGSTRate</AggrCompute>
+            <AggrCompute> HSNIGSTRate: Last: $ItemGSTRate</AggrCompute>
+            <AggrCompute> TaxableVal: Sum: $TaxableVal</AggrCompute>
+            <AggrCompute> CGSTVal: Sum: $CGSTVal</AggrCompute>
+            <AggrCompute> SGSTVal: Sum: $SGSTVal</AggrCompute>
+            <AggrCompute> IGSTVal: Sum: $IGSTVal</AggrCompute>
+            <AggrCompute> CessVal: Sum: $CessVal</AggrCompute>
+          </COLLECTION>
+        </TDLMESSAGE>
+      </TDL>
+    </DESC>
+  </BODY>
+</ENVELOPE>

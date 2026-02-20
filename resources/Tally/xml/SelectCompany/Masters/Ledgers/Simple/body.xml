@@ -1,0 +1,58 @@
+<ENVELOPE>
+    <HEADER>
+        <VERSION>1</VERSION>
+        <TALLYREQUEST>Export</TALLYREQUEST>
+        <TYPE>Data</TYPE>
+        <ID>KS_CompanyWiseLedger</ID>
+    </HEADER>
+    <BODY>
+        <DESC>
+            <TDL>
+                <TDLMESSAGE>
+                    <REPORT NAME="KS_CompanyWiseLedger" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <FORMS>KS_CompanyWiseLedger</FORMS>
+                    </REPORT>
+                    <FORM NAME="KS_CompanyWiseLedger" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <TOPPARTS>KS_CompanyWiseLedger</TOPPARTS>
+                    </FORM>
+                    <PART NAME="KS_CompanyWiseLedger" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <TOPLINES>KS_CompanyWiseLedger</TOPLINES>
+                        <REPEAT>KS_CompanyWiseLedger : KS_loopLedger</REPEAT>
+                        <SCROLLED>Vertical</SCROLLED>
+                    </PART>
+                    <LINE NAME="KS_CompanyWiseLedger" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <LEFTFIELDS>KS_ledger_name,KS_ledger_GUID</LEFTFIELDS>
+                        <XMLTAG>&quot;Ledgers&quot;</XMLTAG>
+                    </LINE>
+                    <FIELD NAME="KS_ledger_name" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;LedgerName&quot;</XMLTAG>
+                        <SET>$ledger_name</SET>
+                    </FIELD>
+<FIELD NAME="KS_ledger_GUID" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                    <XMLTAG>&quot;GUID&quot;</XMLTAG>
+                    <SET>$ledger_guid</SET>
+                </FIELD>
+
+
+                    <COLLECTION NAME="KS_loopLedger" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <COLLECTIONS>KS_datacoll:KS_loadedCompaniescoll</COLLECTIONS>
+                    </COLLECTION>
+                    <COLLECTION NAME="KS_datacoll" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <TYPE>Ledger</TYPE>
+                        <BELONGSTO>Yes</BELONGSTO>
+                        <METHOD>ledger_name:$name</METHOD>
+                         <METHOD>ledger_GUID:$GUID</METHOD>
+                    </COLLECTION>
+                    <COLLECTION NAME="KS_loadedCompaniescoll" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <TYPE>Company</TYPE>
+                        <NATIVEMETHOD>Name,Guid</NATIVEMETHOD>
+                        <FILTERS>CompanyNameFilter</FILTERS>
+                    </COLLECTION>
+
+   <SYSTEM TYPE="Formulae" NAME="CompanyNameFilter" ISMODIFY="No" ISFIXED="No" ISINTERNAL="No">$$ExactMatch:($$String:$name):&quot;KeshavSoft_CompanyName&quot;   </SYSTEM>
+             
+                </TDLMESSAGE>
+            </TDL>
+        </DESC>
+    </BODY>
+</ENVELOPE>

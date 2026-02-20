@@ -1,0 +1,75 @@
+POST http://localhost:9000
+
+<ENVELOPE>
+	<HEADER>
+		<VERSION>1</VERSION>
+		<TALLYREQUEST>Export</TALLYREQUEST>
+		<TYPE>Data</TYPE>
+		<ID>KS_CompanyWiseStockItem</ID>
+	</HEADER>
+	<BODY>
+		<DESC>
+			<STATICVARIABLES>
+				<SVEXPORTFORMAT>$$SysName:XML</SVEXPORTFORMAT>
+			</STATICVARIABLES>
+			<TDL>
+				<TDLMESSAGE>
+					<REPORT NAME="KS_CompanyWiseStockItem" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+						<FORMS>KS_CompanyWiseStockItem</FORMS>
+					</REPORT>
+					<FORM NAME="KS_CompanyWiseStockItem" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+						<TOPPARTS>KS_CompanyWiseStockItem</TOPPARTS>
+					</FORM>
+					<PART NAME="KS_CompanyWiseStockItem" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+						<TOPLINES>KS_CompanyWiseStockItem</TOPLINES>
+						<REPEAT>KS_CompanyWiseStockItem : KS_loopKSStocks</REPEAT>
+						<SCROLLED>Vertical</SCROLLED>
+					</PART>
+					<LINE NAME="KS_CompanyWiseStockItem" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+						<LEFTFIELDS>KS_StockItemName, KS_StockClosingRate, KS_StockClosingValue</LEFTFIELDS>
+						<XMLTAG>&quot;stockitems&quot;</XMLTAG>
+					</LINE>
+
+					<FIELD NAME="KS_StockItemName" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+						<XMLTAG>&quot;ItemName&quot;</XMLTAG>
+						<SET>$KS_StockItemName</SET>
+					</FIELD>
+					
+						<FIELD NAME="KS_StockClosingRate" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+						<XMLTAG>&quot;ksstockclosingrate&quot;</XMLTAG>
+						<SET>$KS_StockClosingRate</SET>
+					</FIELD>
+
+					<FIELD NAME="KS_StockClosingValue" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+						<XMLTAG>&quot;ksstockclosingvalue&quot;</XMLTAG>
+						<SET>$KS_StockClosingValue</SET>
+					</FIELD>
+					
+
+					<COLLECTION NAME="KS_loopKSStocks" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+						<COLLECTIONS>KS_stock_collection:KS_loadedCompaniescoll</COLLECTIONS>
+					</COLLECTION>
+					<COLLECTION NAME="KS_stock_collection" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+						<TYPE>StockItem</TYPE>
+						<BELONGSTO>Yes</BELONGSTO>
+						<METHOD>KS_applicable_from:$$FullListEx:&quot;;&quot;:gstdetails:$applicablefrom</METHOD>
+						<METHOD>KS_Stock_hsn_code:$$FullListEx:&quot;;&quot;:gstdetails:$hsncode</METHOD>
+						<METHOD>KS_StockItemName:$name</METHOD>
+						<METHOD>KS_StockClosingRate:$closingrate</METHOD>
+						<METHOD>KS_StockClosingValue:$closingvalue</METHOD>
+						<METHOD>KS_StockUnit:$baseunits</METHOD>
+						<METHOD>KS_hsn_description:$$FullListEx:&quot;;&quot;:gstdetails:$hsn</METHOD>
+						<NATIVEMETHOD>gstdetails.*</NATIVEMETHOD>
+					</COLLECTION>
+					<COLLECTION NAME="KS_loadedCompaniescoll" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+						<TYPE>Company</TYPE>
+						<NATIVEMETHOD>Name,Guid</NATIVEMETHOD>
+						   <FILTERS>CompanyNameFilter</FILTERS>
+					</COLLECTION>
+
+					<SYSTEM TYPE="Formulae" NAME="CompanyNameFilter" ISMODIFY="No" ISFIXED="No" ISINTERNAL="No">$$ExactMatch:($$String:$name):&quot;JYOTHI CYCLE STORES-2024-2025&quot;   </SYSTEM>
+				</TDLMESSAGE>
+			</TDL>
+		</DESC>
+	</BODY>
+</ENVELOPE>

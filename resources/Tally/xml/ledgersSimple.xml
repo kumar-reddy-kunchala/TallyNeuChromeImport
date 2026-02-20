@@ -1,0 +1,49 @@
+<ENVELOPE>
+    <HEADER>
+        <VERSION>1</VERSION>
+        <TALLYREQUEST>Export</TALLYREQUEST>
+        <TYPE>Data</TYPE>
+        <ID>CredFlow_CompanyWiseLedger</ID>
+    </HEADER>
+    <BODY>
+        <DESC>
+            <TDL>
+                <TDLMESSAGE>
+                    <REPORT NAME="CredFlow_CompanyWiseLedger" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <FORMS>CredFlow_CompanyWiseLedger</FORMS>
+                    </REPORT>
+                    <FORM NAME="CredFlow_CompanyWiseLedger" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <TOPPARTS>CredFlow_CompanyWiseLedger</TOPPARTS>
+                    </FORM>
+                    <PART NAME="CredFlow_CompanyWiseLedger" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <TOPLINES>CredFlow_CompanyWiseLedger</TOPLINES>
+                        <REPEAT>CredFlow_CompanyWiseLedger : CredFlow_loopLedger</REPEAT>
+                        <SCROLLED>Vertical</SCROLLED>
+                    </PART>
+                    <LINE NAME="CredFlow_CompanyWiseLedger" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <LEFTFIELDS>CredFlow_ledger_name</LEFTFIELDS>
+                        <XMLTAG>&quot;Ledgers&quot;</XMLTAG>
+                    </LINE>
+                    <FIELD NAME="CredFlow_ledger_name" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;Name&quot;</XMLTAG>
+                        <SET>$ledger_name</SET>
+                    </FIELD>
+
+                    <COLLECTION NAME="CredFlow_loopLedger" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <COLLECTIONS>CredFlow_datacoll:CredFlow_loadedCompaniescoll</COLLECTIONS>
+                    </COLLECTION>
+                    <COLLECTION NAME="CredFlow_datacoll" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <TYPE>Ledger</TYPE>
+                        <BELONGSTO>Yes</BELONGSTO>
+                        <METHOD>ledger_name:$name</METHOD>
+                    </COLLECTION>
+                    <COLLECTION NAME="CredFlow_loadedCompaniescoll" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <TYPE>Company</TYPE>
+                        <NATIVEMETHOD>Name,Guid</NATIVEMETHOD>
+                    </COLLECTION>
+
+                </TDLMESSAGE>
+            </TDL>
+        </DESC>
+    </BODY>
+</ENVELOPE>

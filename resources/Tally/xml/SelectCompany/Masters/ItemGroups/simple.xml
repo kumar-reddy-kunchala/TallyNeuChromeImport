@@ -1,0 +1,80 @@
+<ENVELOPE>
+    <HEADER>
+        <VERSION>1</VERSION>
+        <TALLYREQUEST>Export</TALLYREQUEST>
+        <TYPE>Data</TYPE>
+        <ID>KS_CompanyWiseStockGroup</ID>
+    </HEADER>
+    <BODY>
+        <DESC>
+            <STATICVARIABLES>
+                <SVEXPORTFORMAT>$$SysName:XML</SVEXPORTFORMAT>
+            </STATICVARIABLES>
+            <TDL>
+                <TDLMESSAGE>
+                    <REPORT NAME="KS_CompanyWiseStockGroup" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <FORMS>KS_CompanyWiseStockGroup</FORMS>
+                    </REPORT>
+                    <FORM NAME="KS_CompanyWiseStockGroup" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <TOPPARTS>KS_CompanyWiseStockGroup</TOPPARTS>
+                    </FORM>
+                    <PART NAME="KS_CompanyWiseStockGroup" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <TOPLINES>KS_CompanyWiseStockGroup</TOPLINES>
+                        <REPEAT>KS_CompanyWiseStockGroup : KS_loopKSStockGroups</REPEAT>
+                        <SCROLLED>Vertical</SCROLLED>
+                    </PART>
+                    <LINE NAME="KS_CompanyWiseStockGroup" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <LEFTFIELDS>KS_StockGroupName, KS_StockGroupParent, KS_StockGroupGuid, KS_StockGroupAlterid, KS_StockGroupHsnCode, KS_StockGroupApplicableFrom</LEFTFIELDS>
+                        <XMLTAG>&quot;ITEMGROUPS&quot;</XMLTAG>
+                    </LINE>
+
+                    <FIELD NAME="KS_StockGroupName" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;itemgroupname&quot;</XMLTAG>
+                        <SET>$KS_StockGroupName</SET>
+                    </FIELD>
+                    <FIELD NAME="KS_StockGroupParent" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;itemGroupParent&quot;</XMLTAG>
+                        <SET>$KS_StockGroupParent</SET>
+                    </FIELD>
+                    <FIELD NAME="KS_StockGroupGuid" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;guid&quot;</XMLTAG>
+                        <SET>$KS_StockGroupGuid</SET>
+                    </FIELD>
+                    <FIELD NAME="KS_StockGroupAlterid" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;itemgroupalterId&quot;</XMLTAG>
+                        <SET>$KS_StockGroupAlterid</SET>
+                    </FIELD>
+                    <FIELD NAME="KS_StockGroupHsnCode" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;itemgrouhsn&quot;</XMLTAG>
+                        <SET>$KS_StockGroupHsnCode</SET>
+                    </FIELD>
+                    <FIELD NAME="KS_StockGroupApplicableFrom" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;itemgrouphsnapplicable From&quot;</XMLTAG>
+                        <SET>$KS_StockGroupApplicableFrom</SET>
+                    </FIELD>
+
+
+
+                    <COLLECTION NAME="KS_loadedCompaniescoll" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <TYPE>Company</TYPE>
+                        <NATIVEMETHOD>Name,Guid</NATIVEMETHOD>
+                    </COLLECTION>
+                    <COLLECTION NAME="KS_loopKSStockGroups" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <COLLECTIONS>KS_stock_group_collection:KS_loadedCompaniescoll</COLLECTIONS>
+                    </COLLECTION>
+                    <COLLECTION NAME="KS_stock_group_collection" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <TYPE>StockGroup</TYPE>
+                        <BELONGSTO>Yes</BELONGSTO>
+                        <METHOD>KS_StockGroupName:$name</METHOD>
+                        <METHOD>KS_StockGroupParent:$parent</METHOD>
+                        <METHOD>KS_StockGroupGuid:$guid</METHOD>
+                        <METHOD>KS_StockGroupAlterid:$alterid</METHOD>
+                        <METHOD>KS_StockGroupHsnCode:$$FullListEx:&quot;;&quot;:gstdetails:$hsncode</METHOD>
+                        <METHOD>KS_StockGroupApplicableFrom:$$FullListEx:&quot;;&quot;:gstdetails:$applicablefrom</METHOD>
+                        <NATIVEMETHOD>gstdetails.*</NATIVEMETHOD>
+                    </COLLECTION>
+                </TDLMESSAGE>
+            </TDL>
+        </DESC>
+    </BODY>
+</ENVELOPE>

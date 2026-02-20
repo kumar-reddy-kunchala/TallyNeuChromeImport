@@ -1,0 +1,102 @@
+<ENVELOPE>
+    <HEADER>
+        <VERSION>1</VERSION>
+        <TALLYREQUEST>Export</TALLYREQUEST>
+        <TYPE>Data</TYPE>
+        <ID>CredFlow_CompanyWiseSales</ID>
+    </HEADER>
+    <BODY>
+        <DESC>
+            <STATICVARIABLES>
+                <SVEXPORTFORMAT>$$SysName:XML</SVEXPORTFORMAT>
+            </STATICVARIABLES>
+            <TDL>
+                <TDLMESSAGE>
+                    <REPORT NAME="CredFlow_CompanyWiseSales" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <FORMS>CredFlow_CompanyWiseSales</FORMS>
+                    </REPORT>
+                    <FORM NAME="CredFlow_CompanyWiseSales" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <TOPPARTS>CredFlow_CompanyWiseSales</TOPPARTS>
+                    </FORM>
+                    <PART NAME="CredFlow_CompanyWiseSales" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <TOPLINES>CredFlow_CompanyWiseSales</TOPLINES>
+                        <REPEAT>CredFlow_CompanyWiseSales : CredFlow_loopSales</REPEAT>
+                        <SCROLLED>Vertical</SCROLLED>
+                    </PART>
+                    <LINE NAME="CredFlow_CompanyWiseSales" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <LEFTFIELDS>CredFlow_salesvchnumber, credflow_salesvouchertype, CredFlow_salesvchpartyname,
+						   CredFlow_salesvoucher_inventoryentrystockitem,
+							  CredFlow_salesvoucher_inventoryentryrate, CredFlow_salesvoucher_inventoryentryamount,
+							   CredFlow_salesvoucher_inventoryentryactualqty
+                        </LEFTFIELDS>
+                        <XMLTAG>&quot;Sales&quot;</XMLTAG>
+                    </LINE>
+
+
+
+
+                    <FIELD NAME="CredFlow_salesvchnumber" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;Voucher Number&quot;</XMLTAG>
+                        <SET>$salesvchnumber</SET>
+                    </FIELD>
+                    <FIELD NAME="credflow_salesvouchertype" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>"Voucher Type"</XMLTAG>
+                        <SET>$credflow_salesvouchertype</SET>
+                    </FIELD>
+                    <FIELD NAME="CredFlow_salesvchpartyname" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;Party Name&quot;</XMLTAG>
+                        <SET>$salesvchpartyname</SET>
+                    </FIELD>
+                    <FIELD NAME="CredFlow_salesvoucher_inventoryentrystockitem" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;Stock Item Name&quot;</XMLTAG>
+                        <SET>$salesvoucher_inventoryentrystockitem</SET>
+                    </FIELD>
+                    <FIELD NAME="CredFlow_salesvoucher_inventoryentryrate" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;Item Rate&quot;</XMLTAG>
+                        <SET>$salesvoucher_inventoryentryrate</SET>
+                    </FIELD>
+                    <FIELD NAME="CredFlow_salesvoucher_inventoryentryamount" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;Item Amount&quot;</XMLTAG>
+                        <SET>$salesvoucher_inventoryentryamount</SET>
+                    </FIELD>
+                    <FIELD NAME="CredFlow_salesvoucher_inventoryentryactualqty" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;Item Actual Quantity&quot;</XMLTAG>
+                        <SET>$salesvoucher_inventoryentryactualqty</SET>
+                    </FIELD>
+
+                    <COLLECTION NAME="CredFlow_datacoll" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <TYPE>vouchers:vouchertype</TYPE>
+                        <CHILDOF>$$VchTypeSales</CHILDOF>
+                        <BELONGSTO>Yes</BELONGSTO>
+                        <METHOD>salesvchnumber:$vouchernumber</METHOD>
+                        <METHOD>credflow_salesvouchertype: $vouchertypename</METHOD>
+                        <METHOD>salesvchpartyname:$partyname</METHOD>
+                        <METHOD>salesvchdeliverynotes:$$FullListEx:&quot;;&quot;:invoicedelnotes:$basicshipdeliverynote</METHOD>
+                        <METHOD>salesvchdeliverynotesdate:$$FullListEx:&quot;;&quot;:invoicedelnotes:$basicshippingdate</METHOD>
+                        <METHOD>salesvchotherreference:$basicorderref</METHOD>
+
+                        <METHOD>salesvoucher_inventoryentrystockitem:$$FullListEx:&quot;;&quot;:inventoryentries:$stockitemname</METHOD>
+
+                        <METHOD>salesvoucher_inventoryentryrate:$$FullListEx:&quot;;&quot;:inventoryentries:$rate</METHOD>
+                        <METHOD>salesvoucher_inventoryentryamount:$$FullListEx:&quot;;&quot;:inventoryentries:$amount</METHOD>
+                        <METHOD>salesvoucher_inventoryentryactualqty:$$FullListEx:&quot;;&quot;:inventoryentries:$actualqty</METHOD>
+
+
+                        <NATIVEMETHOD>inventoryentries.*</NATIVEMETHOD>
+
+                    </COLLECTION>
+                    <COLLECTION NAME="CredFlow_loadedCompaniescoll" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <TYPE>Company</TYPE>
+                        <NATIVEMETHOD>Name,Guid</NATIVEMETHOD>
+                    </COLLECTION>
+
+                    <COLLECTION NAME="CredFlow_loopSales" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <COLLECTIONS>CredFlow_datacoll:CredFlow_loadedCompaniescoll</COLLECTIONS>
+                    </COLLECTION>
+
+
+                </TDLMESSAGE>
+            </TDL>
+        </DESC>
+    </BODY>
+</ENVELOPE>

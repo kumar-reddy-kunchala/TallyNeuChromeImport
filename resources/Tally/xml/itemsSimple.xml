@@ -1,0 +1,144 @@
+
+<ENVELOPE>
+	<HEADER>
+		<VERSION>1</VERSION>
+		<TALLYREQUEST>Export</TALLYREQUEST>
+		<TYPE>Data</TYPE>
+		<ID>CredFlow_CompanyWiseStockItem</ID>
+	</HEADER>
+	<BODY>
+		<DESC>
+			<STATICVARIABLES>
+				<SVEXPORTFORMAT>$$SysName:XML</SVEXPORTFORMAT>
+			</STATICVARIABLES>
+			<TDL>
+				<TDLMESSAGE>
+					<REPORT NAME="CredFlow_CompanyWiseStockItem" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+						<FORMS>CredFlow_CompanyWiseStockItem</FORMS>
+					</REPORT>
+					<FORM NAME="CredFlow_CompanyWiseStockItem" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+						<TOPPARTS>CredFlow_CompanyWiseStockItem</TOPPARTS>
+					</FORM>
+					<PART NAME="CredFlow_CompanyWiseStockItem" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+						<TOPLINES>CredFlow_CompanyWiseStockItem</TOPLINES>
+						<REPEAT>CredFlow_CompanyWiseStockItem : CredFlow_loopCredFlowStocks</REPEAT>
+						<SCROLLED>Vertical</SCROLLED>
+					</PART>
+					<LINE NAME="CredFlow_CompanyWiseStockItem" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+						<LEFTFIELDS>CredFlow_StockItemName, CredFlow_Stock_hsn_code, CredFlow_applicable_from, CredFlow_StockClosingRate,CredFlow_StockClosingValue,CredFlow_StockUnit,CredFlow_StockCategory,CredFlow_StockAlterId,CredFlow_StockGuid,CredFlow_StockItemParent,CredFlow_StockOpeningBalance,CredFlow_StockOpeningRate,CredFlow_StockOpeningValue,CredFlow_StockAvgSalesPrice,CredFlow_StockAvgPurPrice,CredFlow_StockLastSaleDate,CredFlow_StockLastPurcDate,CredFlow_additional_unit_conversion,CredFlow_hsn_description</LEFTFIELDS>
+						<XMLTAG>&quot;stockitems&quot;</XMLTAG>
+					</LINE>
+
+					<FIELD NAME="CredFlow_StockItemName" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+						<XMLTAG>&quot;ksstockitemname&quot;</XMLTAG>
+						<SET>$CredFlow_StockItemName</SET>
+					</FIELD>
+					<FIELD NAME="CredFlow_Stock_hsn_code" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+						<XMLTAG>&quot;ksstockhsncode&quot;</XMLTAG>
+						<SET>$CredFlow_Stock_hsn_code</SET>
+					</FIELD>
+					<FIELD NAME="CredFlow_applicable_from" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+						<XMLTAG>&quot;ksApplicablefrom&quot;</XMLTAG>
+						<SET>$CredFlow_applicable_from</SET>
+					</FIELD>
+					<FIELD NAME="CredFlow_StockClosingRate" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+						<XMLTAG>&quot;ksstockclosingrate&quot;</XMLTAG>
+						<SET>$CredFlow_StockClosingRate</SET>
+					</FIELD>
+					<FIELD NAME="CredFlow_StockClosingValue" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+						<XMLTAG>&quot;ksstockclosingvalue&quot;</XMLTAG>
+						<SET>$CredFlow_StockClosingValue</SET>
+					</FIELD>
+					<FIELD NAME="CredFlow_StockUnit" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+						<XMLTAG>&quot;ksstockunit&quot;</XMLTAG>
+						<SET>$CredFlow_StockUnit</SET>
+					</FIELD>
+					<FIELD NAME="CredFlow_StockCategory" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+						<XMLTAG>&quot;ksstockcategory&quot;</XMLTAG>
+						<SET>$CredFlow_StockCategory</SET>
+					</FIELD>
+					<FIELD NAME="Credflow_StockAlterId" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+						<XMLTAG>&quot;ksstockalterId&quot;</XMLTAG>
+						<SET>$CredFlow_StockAlterId</SET>
+					</FIELD>
+					<FIELD NAME="CredFlow_StockGuid" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+						<XMLTAG>&quot;guid&quot;</XMLTAG>
+						<SET>$CredFlow_StockGuid</SET>
+					</FIELD>
+					<FIELD NAME="CredFlow_StockItemParent" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+						<XMLTAG>&quot;ksstockstemparent&quot;</XMLTAG>
+						<SET>$CredFlow_StockItemParent</SET>
+					</FIELD>
+					<FIELD NAME="CredFlow_StockOpeningBalance" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+						<XMLTAG>&quot;ksstockopeningbalance&quot;</XMLTAG>
+						<SET>$CredFlow_StockOpeningBalance</SET>
+					</FIELD>
+					<FIELD NAME="CredFlow_StockOpeningRate" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+						<XMLTAG>&quot;ksstockopeningrate&quot;</XMLTAG>
+						<SET>$CredFlow_StockOpeningRate</SET>
+					</FIELD>
+					<FIELD NAME="CredFlow_StockOpeningValue" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+						<XMLTAG>&quot;ksstockopeningvalue&quot;</XMLTAG>
+						<SET>$CredFlow_StockOpeningValue</SET>
+					</FIELD>
+					<FIELD NAME="CredFlow_StockAvgSalesPrice" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+						<XMLTAG>&quot;ksstockavgsaleprice&quot;</XMLTAG>
+						<SET>$CredFlow_StockAvgSalesPrice</SET>
+					</FIELD>
+					<FIELD NAME="CredFlow_StockAvgPurPrice" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+						<XMLTAG>&quot;ksstockavgpurprice&quot;</XMLTAG>
+						<SET>$CredFlow_StockAvgPurPrice</SET>
+					</FIELD>
+					<FIELD NAME="CredFlow_StockLastSaleDate" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+						<XMLTAG>&quot;ksstocklastsaledate&quot;</XMLTAG>
+						<SET>$CredFlow_StockLastSaleDate</SET>
+					</FIELD>
+					<FIELD NAME="CredFlow_StockLastPurcDate" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+						<XMLTAG>&quot;ksstocklastpurcpate&quot;</XMLTAG>
+						<SET>$CredFlow_StockLastPurcDate</SET>
+					</FIELD>
+					<FIELD NAME="CredFlow_additional_unit_conversion" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+						<XMLTAG>&quot;ksadditionalunitsconversion&quot;</XMLTAG>
+						<SET>$CredFlow_additional_unit_conversion</SET>
+					</FIELD>
+					<FIELD NAME="CredFlow_hsn_description" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+						<XMLTAG>&quot;ksHSNdescription&quot;</XMLTAG>
+						<SET>$CredFlow_hsn_description</SET>
+					</FIELD>
+					
+					<COLLECTION NAME="CredFlow_loopCredFlowStocks" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+						<COLLECTIONS>CredFlow_stock_collection:CredFlow_loadedCompaniescoll</COLLECTIONS>
+					</COLLECTION>
+					<COLLECTION NAME="CredFlow_stock_collection" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+						<TYPE>StockItem</TYPE>
+						<BELONGSTO>Yes</BELONGSTO>
+						<METHOD>CredFlow_applicable_from:$$FullListEx:&quot;;&quot;:gstdetails:$applicablefrom</METHOD>
+						<METHOD>CredFlow_Stock_hsn_code:$$FullListEx:&quot;;&quot;:gstdetails:$hsncode</METHOD>
+						<METHOD>CredFlow_StockItemName:$name</METHOD>
+						<METHOD>CredFlow_StockClosingRate:$closingrate</METHOD>
+						<METHOD>CredFlow_StockClosingValue:$closingvalue</METHOD>
+						<METHOD>CredFlow_StockUnit:$baseunits</METHOD>
+						<METHOD>CredFlow_StockCategory:$category</METHOD>
+						<METHOD>CredFlow_StockAlterId:$alterid</METHOD>
+						<METHOD>CredFlow_StockGuid:$guid</METHOD>
+						<METHOD>CredFlow_StockItemParent:$parent</METHOD>
+						<METHOD>CredFlow_StockOpeningBalance:$openingbalance</METHOD>
+						<METHOD>CredFlow_StockOpeningRate:$openingrate</METHOD>
+						<METHOD>CredFlow_StockOpeningValue:$openingvalue</METHOD>
+						<METHOD>CredFlow_StockAvgSalesPrice:$avgsaleprice</METHOD>
+						<METHOD>CredFlow_StockAvgPurPrice:$avgpurcprice</METHOD>
+						<METHOD>CredFlow_StockLastSaleDate:$lastsaledate</METHOD>
+						<METHOD>CredFlow_StockLastPurcDate:$lastpurcdate</METHOD>
+						<METHOD>CredFlow_additional_unit_conversion:$conversion</METHOD>
+						<METHOD>CredFlow_hsn_description:$$FullListEx:&quot;;&quot;:gstdetails:$hsn</METHOD>
+						<NATIVEMETHOD>gstdetails.*</NATIVEMETHOD>
+					</COLLECTION>
+					<COLLECTION NAME="CredFlow_loadedCompaniescoll" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+						<TYPE>Company</TYPE>
+						<NATIVEMETHOD>Name,Guid</NATIVEMETHOD>
+					</COLLECTION>
+				</TDLMESSAGE>
+			</TDL>
+		</DESC>
+	</BODY>
+</ENVELOPE>

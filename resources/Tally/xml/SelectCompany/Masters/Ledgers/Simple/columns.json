@@ -1,0 +1,12 @@
+[
+    {
+        "field": "VoucherType",
+        "title": "VoucherType",
+        "tagName": "VOUCHERTYPE"
+    },
+    {
+        "field": "VoucherNumber",
+        "title": "VoucherNumber",
+        "tagName": "VOUCHERNUMBER"
+    }
+]

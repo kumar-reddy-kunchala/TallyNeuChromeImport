@@ -1,0 +1,83 @@
+POST http://localhost:9000
+Content-Type: text/xml
+
+<ENVELOPE>
+    <HEADER>
+        <VERSION>1</VERSION>
+        <TALLYREQUEST>Export</TALLYREQUEST>
+        <TYPE>Data</TYPE>
+        <ID>CredFlow_CompanyWiseStockGroup</ID>
+    </HEADER>
+    <BODY>
+        <DESC>
+            <STATICVARIABLES>
+                <SVEXPORTFORMAT>$$SysName:XML</SVEXPORTFORMAT>
+            </STATICVARIABLES>
+            <TDL>
+                <TDLMESSAGE>
+                    <REPORT NAME="CredFlow_CompanyWiseStockGroup" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <FORMS>CredFlow_CompanyWiseStockGroup</FORMS>
+                    </REPORT>
+                    <FORM NAME="CredFlow_CompanyWiseStockGroup" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <TOPPARTS>CredFlow_CompanyWiseStockGroup</TOPPARTS>
+                    </FORM>
+                    <PART NAME="CredFlow_CompanyWiseStockGroup" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <TOPLINES>CredFlow_CompanyWiseStockGroup</TOPLINES>
+                        <REPEAT>CredFlow_CompanyWiseStockGroup : CredFlow_loopCredFlowStockGroups</REPEAT>
+                        <SCROLLED>Vertical</SCROLLED>
+                    </PART>
+                    <LINE NAME="CredFlow_CompanyWiseStockGroup" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <LEFTFIELDS>CredFlow_StockGroupName, CredFlow_StockGroupParent, CredFlow_StockGroupGuid, CredFlow_StockGroupAlterid, CredFlow_StockGroupHsnCode, CredFlow_StockGroupApplicableFrom</LEFTFIELDS>
+                        <XMLTAG>&quot;StockGroups&quot;</XMLTAG>
+                    </LINE>
+
+                    <FIELD NAME="CredFlow_StockGroupName" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;ksgroupname&quot;</XMLTAG>
+                        <SET>$CredFlow_StockGroupName</SET>
+                    </FIELD>
+                    <FIELD NAME="CredFlow_StockGroupParent" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;ksGroupParent&quot;</XMLTAG>
+                        <SET>$CredFlow_StockGroupParent</SET>
+                    </FIELD>
+                    <FIELD NAME="CredFlow_StockGroupGuid" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;guid&quot;</XMLTAG>
+                        <SET>$CredFlow_StockGroupGuid</SET>
+                    </FIELD>
+                    <FIELD NAME="CredFlow_StockGroupAlterid" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;ksgroupalterId&quot;</XMLTAG>
+                        <SET>$CredFlow_StockGroupAlterid</SET>
+                    </FIELD>
+                    <FIELD NAME="CredFlow_StockGroupHsnCode" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;ksgrouhsn&quot;</XMLTAG>
+                        <SET>$CredFlow_StockGroupHsnCode</SET>
+                    </FIELD>
+                    <FIELD NAME="CredFlow_StockGroupApplicableFrom" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;ksgrouphsnapplicable From&quot;</XMLTAG>
+                        <SET>$CredFlow_StockGroupApplicableFrom</SET>
+                    </FIELD>
+
+
+
+                    <COLLECTION NAME="CredFlow_loadedCompaniescoll" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <TYPE>Company</TYPE>
+                        <NATIVEMETHOD>Name,Guid</NATIVEMETHOD>
+                    </COLLECTION>
+                    <COLLECTION NAME="CredFlow_loopCredFlowStockGroups" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <COLLECTIONS>CredFlow_stock_group_collection:CredFlow_loadedCompaniescoll</COLLECTIONS>
+                    </COLLECTION>
+                    <COLLECTION NAME="CredFlow_stock_group_collection" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <TYPE>StockGroup</TYPE>
+                        <BELONGSTO>Yes</BELONGSTO>
+                        <METHOD>CredFlow_StockGroupName:$name</METHOD>
+                        <METHOD>CredFlow_StockGroupParent:$parent</METHOD>
+                        <METHOD>CredFlow_StockGroupGuid:$guid</METHOD>
+                        <METHOD>CredFlow_StockGroupAlterid:$alterid</METHOD>
+                        <METHOD>CredFlow_StockGroupHsnCode:$$FullListEx:&quot;;&quot;:gstdetails:$hsncode</METHOD>
+                        <METHOD>CredFlow_StockGroupApplicableFrom:$$FullListEx:&quot;;&quot;:gstdetails:$applicablefrom</METHOD>
+                        <NATIVEMETHOD>gstdetails.*</NATIVEMETHOD>
+                    </COLLECTION>
+                </TDLMESSAGE>
+            </TDL>
+        </DESC>
+    </BODY>
+</ENVELOPE>

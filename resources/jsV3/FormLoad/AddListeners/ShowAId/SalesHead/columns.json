@@ -1,0 +1,27 @@
+[
+    {
+        "field": "PARTYNAME",
+        "title": "PARTYNAME",
+        "tagName": "PARTYNAME"
+    },
+    {
+        "field": "VOUCHERTYPE",
+        "title": "VOUCHERTYPE",
+        "tagName": "VOUCHERTYPE"
+    },
+    {
+        "field": "DATE",
+        "title": "DATE",
+        "tagName": "DATE"
+    },
+    {
+        "field": "REFERENCE",
+        "title": "REFERENCE",
+        "tagName": "REFERENCE"
+    },
+    {
+        "field": "VOUCHER_CANCELLED",
+        "title": "VOUCHER_CANCELLED",
+        "tagName": "VOUCHER_CANCELLED"
+    }
+]

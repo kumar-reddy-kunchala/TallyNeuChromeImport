@@ -1,0 +1,70 @@
+<ENVELOPE>
+    <HEADER>
+        <VERSION>1</VERSION>
+        <TALLYREQUEST>Export</TALLYREQUEST>
+        <TYPE>Data</TYPE>
+        <ID>CredFlow_CompanyWiseStockCategory</ID>
+    </HEADER>
+    <BODY>
+        <DESC>
+            <STATICVARIABLES>
+                <SVEXPORTFORMAT>$$SysName:XML</SVEXPORTFORMAT>
+            </STATICVARIABLES>
+            <TDL>
+                <TDLMESSAGE>
+                    <REPORT NAME="CredFlow_CompanyWiseStockCategory" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <FORMS>CredFlow_CompanyWiseStockCategory</FORMS>
+                    </REPORT>
+                    <FORM NAME="CredFlow_CompanyWiseStockCategory" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <TOPPARTS>CredFlow_CompanyWiseStockCategory</TOPPARTS>
+                    </FORM>
+                    <PART NAME="CredFlow_CompanyWiseStockCategory" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <TOPLINES>CredFlow_CompanyWiseStockCategory</TOPLINES>
+                        <REPEAT>CredFlow_CompanyWiseStockCategory : CredFlow_loopCredFlowStockCategory</REPEAT>
+                        <SCROLLED>Vertical</SCROLLED>
+                    </PART>
+                    <LINE NAME="CredFlow_CompanyWiseStockCategory" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <LEFTFIELDS>CredFlow_StockCategoryName,CredFlow_StockCategoryGuid,CredFlow_StockCatergoryAlterid,CredFlow_StockCategoryParent</LEFTFIELDS>
+                        <XMLTAG>&quot;itemcategories&quot;</XMLTAG>
+                    </LINE>
+
+
+                    <FIELD NAME="CredFlow_StockCategoryName" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;itemcategoryname&quot;</XMLTAG>
+                        <SET>$CredFlow_StockCategoryName</SET>
+                    </FIELD>
+                    <FIELD NAME="CredFlow_StockCategoryGuid" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;guid&quot;</XMLTAG>
+                        <SET>$CredFlow_StockCategoryGuid</SET>
+                    </FIELD>
+                    <FIELD NAME="CredFlow_StockCatergoryAlterid" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;itemcategoryalterid&quot;</XMLTAG>
+                        <SET>$CredFlow_StockCatergoryAlterid</SET>
+                    </FIELD>
+                    <FIELD NAME="CredFlow_StockCategoryParent" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <XMLTAG>&quot;itemcategoryparent&quot;</XMLTAG>
+                        <SET>$CredFlow_StockCategoryParent</SET>
+                    </FIELD>
+
+
+                    <COLLECTION NAME="CredFlow_loadedCompaniescoll" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <TYPE>Company</TYPE>
+                        <NATIVEMETHOD>Name,Guid</NATIVEMETHOD>
+                    </COLLECTION>
+                    <COLLECTION NAME="CredFlow_loopCredFlowStockCategory" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <COLLECTIONS>CredFlow_stock_category_collection:CredFlow_loadedCompaniescoll</COLLECTIONS>
+                    </COLLECTION>
+                    <COLLECTION NAME="CredFlow_stock_category_collection" ISMODIFY="No" ISFIXED="No" ISINITIALIZE="No" ISOPTION="No" ISINTERNAL="No">
+                        <TYPE>StockCategory</TYPE>
+                        <BELONGSTO>Yes</BELONGSTO>
+                        <METHOD>CredFlow_StockCategoryName:$name</METHOD>
+                        <METHOD>CredFlow_StockCategoryGuid:$guid</METHOD>
+                        <METHOD>CredFlow_StockCatergoryAlterid:$alterid</METHOD>
+                        <METHOD>CredFlow_StockCategoryParent:$parent</METHOD>
+
+                    </COLLECTION>
+                </TDLMESSAGE>
+            </TDL>
+        </DESC>
+    </BODY>
+</ENVELOPE>

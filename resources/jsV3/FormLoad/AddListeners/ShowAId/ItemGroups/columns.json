@@ -1,0 +1,26 @@
+[
+    {
+        "field": "ITEMGROUPNAME",
+        "title": "ITEMGROUPNAME"
+    },
+    {
+        "field": "ITEMGROUPPARENT",
+        "title": "ITEMGROUPPARENT"
+    },
+    {
+        "field": "ITEMGROUPALTERID",
+        "title": "ITEMGROUPALTERID"
+    },
+    {
+        "field": "ITEMGROUPHSNAPPLICABLEFROM",
+        "title": "ITEMGROUPHSNAPPLICABLEFROM"
+    },
+    {
+        "field": "ITEMGROUHSN",
+        "title": "ITEMGROUHSN"
+    },
+    {
+        "field": "GUID",
+        "title": "GUID"
+    }
+]
