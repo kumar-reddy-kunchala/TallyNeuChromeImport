@@ -31,3 +31,10 @@ for delivery
 
 run neu build latest
 
+21 Feb 2026
+
+resources 
+
+https://help.tallysolutions.com/tally-prime-integration-using-json-1/#1761806780007-1f70f256-4a67
+
+today started http files with json in HttpFiles folder in root
