@@ -44,7 +44,7 @@ today started http files with json in HttpFiles folder in root
 
 Tally Sales Voucher Imported Using Node.js
 
-This imports Sales Vouchers into Tally (running on localhost:9000) using:
+This imported the Sales Vouchers into Tally (running on localhost:9000) using:
 
 1. Node.js
 
