@@ -28,7 +28,7 @@ using live server
 https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer
 
 
-for the  delivery
+for the delivery
 
 run neu build latest
 
@@ -42,7 +42,7 @@ today started http files with json in HttpFiles folder in root
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 
-Tally Sales Voucher Import Using Node.js
+Tally Sales Voucher Imported Using Node.js
 
 This imports Sales Vouchers into Tally (running on localhost:9000) using:
 
