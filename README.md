@@ -27,7 +27,8 @@ using live server
 
 https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer
 
-for delivery
+
+for the  delivery
 
 run neu build latest
 
